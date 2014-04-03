@@ -17,6 +17,8 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'turbolinks'
 
+gem 'thin'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
