@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
 
 	#relationships
-  belongs_to :suppliers
+  belongs_to :supplier
 end

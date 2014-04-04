@@ -1,7 +1,7 @@
 class CreateOrderLines < ActiveRecord::Migration
   def change
     create_table :order_lines do |t|
-      t.integer :order_line_id
+
       t.integer :order_id
       t.integer :article_id
       t.integer :amount

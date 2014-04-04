@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Article</th>
       <th>Article code</th>
       <th>Supplier</th>
       <th>Description</th>
@@ -18,9 +17,8 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.article_id %></td>
         <td><%= article.article_code %></td>
-        <td><%= article.supplier_id %></td>
+        <td><%= article.supplier.name %></td>
         <td><%= article.description %></td>
         <td><%= article.price_per_unit %></td>
         <td><%= article.unit %></td>
