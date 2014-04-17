@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   #relationships
   has_many :orders
+
+  # attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  validates_uniqueness_of :email, :case_sensitive => false
 end

@@ -9,15 +9,17 @@ OfficeSupplies::Application.routes.draw do
 
   resources :articles
 
-  devise_for :users
-  devise_scope :user do
-    authenticated :user do
-      root :to => 'orders#index', as: :authenticated_root
-    end
-    unauthenticated :user do
-      root :to => 'devise/registrations#new', as: :unauthenticated_root
-    end
-  end
+  devise_for :user
+  root 'home#index'
+  
+  # devise_scope :user do
+  #   authenticated :user do
+  #     root :to => 'orders#index', as: :authenticated_root
+  #   end
+  #   unauthenticated :user do
+  #     root :to => 'devise/registrations#new', as: :unauthenticated_root
+  #   end
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
