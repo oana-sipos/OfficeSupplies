@@ -20,5 +20,7 @@
   <%= @order.delivery_date %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+	<%= link_to "<button type='button', class='btn btn-success'>Edit</button>".html_safe, edit_order_path(@order) %>
+		
+	<%= link_to "<button type='button', class='btn btn-success'>Back</button>".html_safe, orders_path %>
+	
