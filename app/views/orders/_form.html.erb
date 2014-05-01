@@ -1,3 +1,5 @@
+<div class="col-md-4 col-md-offset-4">
+
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -21,13 +23,16 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= current_user.email %>
   </div>
   <div class="field">
     <%= f.label :delivery_date %><br>
     <%= f.date_select :delivery_date %>
   </div>
-  <div class="actions">
+  <%= link_to "<button type='submit' class='btn btn-success'>Create Order</button>".html_safe, orders_path %>
+<!--   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div> -->
 <% end %>
+
+</div>
