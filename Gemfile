@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
 	gem 'better_errors'
-	#gem 'rails-erd'
+	gem 'rails-erd'
 end
 
 group :test do
