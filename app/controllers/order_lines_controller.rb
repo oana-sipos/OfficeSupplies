@@ -26,10 +26,11 @@ class OrderLinesController < ApplicationController
   # POST /order_lines.json
   def create
     @order_line = OrderLine.new(order_line_params)
+    order_id = @order_line[:order_id]
 
     respond_to do |format|
       if @order_line.save
-        format.html { redirect_to @order_line, notice: 'Order line was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Order line was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order_line }
       else
         format.html { render action: 'new' }

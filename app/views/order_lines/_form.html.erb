@@ -11,23 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :order_line_id %><br>
-    <%= f.number_field :order_line_id %>
+<div class='row'>
+  <div class='form-group col-md-12'>
+    <div class="field col-sm-2">
+      <%= f.number_field :order_line_id, placeholder: 'Order line id' %>
+    </div>
+
+    <div class="field col-sm-2 col-sm-offset-1">
+      <%= f.number_field :order_id, placeholder: 'Order id' %>
+    </div>
+
+    <div class="field col-sm-2 col-sm-offset-1">
+       <%= f.number_field :article_id, placeholder: 'Article id' %>
+    </div>
+
+    <div class="field col-sm-2 col-sm-offset-1">
+      <%= f.number_field :amount, placeholder: 'Amount' %>
+    </div>    
   </div>
-  <div class="field">
-    <%= f.label :order_id %><br>
-    <%= f.number_field :order_id %>
   </div>
-  <div class="field">
-    <%= f.label :article_id %><br>
-    <%= f.number_field :article_id %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

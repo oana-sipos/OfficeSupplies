@@ -1,26 +1,93 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
 
-<p>
-  <strong>Order:</strong>
-  <%= @order.order_id %>
-</p>
+  <div class="col-sm-3">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Order date:</strong>
-  <%= @order.order_date %>
-</p>
+    <p>
+      <strong>Order:</strong>
+      <%= @order.order_id %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= current_user.email %>
-</p>
+    <p>
+      <strong>Order date:</strong>
+      <%= @order.order_date %>
+    </p>
 
-<p>
-  <strong>Delivery date:</strong>
-  <%= @order.delivery_date %>
-</p>
+    <p>
+      <strong>User:</strong>
+      <%= current_user.email %>
+    </p>
 
-	<%= link_to "<button type='button', class='btn btn-success'>Edit</button>".html_safe, edit_order_path(@order) %>
-		
-	<%= link_to "<button type='button', class='btn btn-success'>Back</button>".html_safe, orders_path %>
-	
+    <p>
+      <strong>Delivery date:</strong>
+      <%= @order.delivery_date %>
+    </p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Order id</th>
+        <th>Order line id</th>
+        <th>Article id</th>
+        <th>Amount</th>
+      </thead>
+
+  <div class="col-sm-7 col-sm-offset-2">
+    <tbody>
+      <% @order.order_lines.each do |line| %>
+      <tr>
+        <td><%= line.order_id %></td>
+        <td><%= line.order_line_id %></td>
+        <td><%= line.article.description %></td>
+        <td><%= line.amount %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+
+    <%= link_to "<button type='button', class='btn btn-success'> Add new product</button>".html_safe, new_order_line_path %>
+
+  	<%= link_to "<button type='button', class='btn btn-success'>Edit</button>".html_safe, edit_order_path(@order) %>
+  		
+  	<%= link_to "<button type='button', class='btn btn-success'>Back</button>".html_safe, orders_path %>
+
+  <br>
+
+  <%= form_for(@order_line) do |f| %>
+    <% if @order_line.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@order_line.errors.count, "error") %> prohibited this order_line from being saved:</h2>
+
+        <ul>
+        <% @order_line.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='row'>
+    <div class='form-group col-md-12'>
+      <div class="field col-sm-2">
+        <%= f.number_field :order_line_id, placeholder: 'Order line id' %>
+      </div>
+
+      <div class="field col-sm-2 col-sm-offset-1">
+        <%= f.number_field :order_id, placeholder: 'Order id' %>
+      </div>
+
+      <div class="field col-sm-2 col-sm-offset-1">
+         <%= f.number_field :article_id, placeholder: 'Article id' %>
+      </div>
+
+      <div class="field col-sm-2 col-sm-offset-1">
+        <%= f.number_field :amount, placeholder: 'Amount' %>
+      </div>    
+    </div>
+    </div>
+
+  </div>
+  <% end %>
+  
+</div>
