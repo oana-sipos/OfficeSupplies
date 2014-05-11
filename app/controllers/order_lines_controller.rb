@@ -26,7 +26,6 @@ class OrderLinesController < ApplicationController
   # POST /order_lines.json
   def create
     @order_line = OrderLine.new(order_line_params)
-    order_id = @order_line[:order_id]
 
     respond_to do |format|
       if @order_line.save
