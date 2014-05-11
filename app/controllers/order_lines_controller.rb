@@ -43,7 +43,7 @@ class OrderLinesController < ApplicationController
   def update
     respond_to do |format|
       if @order_line.update(order_line_params)
-        format.html { redirect_to @order_line, notice: 'Order line was successfully updated.' }
+        format.html { redirect_to order_path(id: order_line_params[:order_id]), notice: 'Order line was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
