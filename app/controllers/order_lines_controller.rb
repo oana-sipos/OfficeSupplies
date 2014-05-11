@@ -26,8 +26,6 @@ class OrderLinesController < ApplicationController
   # POST /order_lines.json
   def create
     @order_line = OrderLine.new(order_line_params)
-    puts '*'*90
-    puts "#{order_line_params[:order_id]}"
 
     respond_to do |format|
       if @order_line.save
@@ -59,7 +57,7 @@ class OrderLinesController < ApplicationController
   def destroy
     @order_line.destroy
     respond_to do |format|
-      format.html { redirect_to order_lines_url }
+      format.html { redirect_to order_path(id: @order_line[:order_id]) }
       format.json { head :no_content }
     end
   end

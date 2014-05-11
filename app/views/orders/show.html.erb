@@ -22,33 +22,11 @@
       <strong>Delivery date:</strong>
       <%= @order.delivery_date %>
     </p>
+
+    <%= link_to "<button type='button', class='btn btn-success'>Edit</button>".html_safe, edit_order_path(@order) %>
+      
+    <%= link_to "<button type='button', class='btn btn-success'>Back</button>".html_safe, orders_path %>
   </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Article description</th>
-        <th>Amount</th>
-      </thead>
-
-  <div class="col-sm-7 col-sm-offset-2">
-    <tbody>
-      <% @order.order_lines.each do |line| %>
-      <tr>
-        <td><%= line.article.description %></td>
-        <td><%= line.amount %></td>
-      </tr>
-      <% end %>
-    </tbody>
-    </table>
-
-    <%= link_to "<button type='button', class='btn btn-success'> Add new product</button>".html_safe, new_order_line_path %>
-
-  	<%= link_to "<button type='button', class='btn btn-success'>Edit</button>".html_safe, edit_order_path(@order) %>
-  		
-  	<%= link_to "<button type='button', class='btn btn-success'>Back</button>".html_safe, orders_path %>
-
-  <br>
 
   <%= form_for(@order_line, url: order_lines_path) do |f| %>
     <% if @order_line.errors.any? %>
@@ -79,5 +57,28 @@
 
   </div>
   <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Article description</th>
+        <th>Amount</th>
+        <th></th>
+        <th></th>
+      </thead>
+
+  <div class="col-sm-7 col-sm-offset-2">
+    <tbody>
+      <% @order.order_lines.each do |line| %>
+      <tr>
+        <td><%= line.article.description %></td>
+        <td><%= line.amount %></td>
+        <td><%= link_to 'Edit', edit_order_line_path(line) %></td>
+        <td><%= link_to 'Destroy', line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <br>
   
 </div>
