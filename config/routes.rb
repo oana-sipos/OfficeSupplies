@@ -1,9 +1,18 @@
 OfficeSupplies::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :order_lines
+  
+  resources :order_lines  do
+    member do
+      put 'more'
+    end
+  end
 
-  resources :orders
+  resources :orders do
+    member do
+      post 'duplicate'
+    end
+  end
 
   resources :suppliers
 
