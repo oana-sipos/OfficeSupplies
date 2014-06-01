@@ -11,6 +11,11 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order_line = OrderLine.new
+    @article_list = Article.all
+    @article_list.each do |option|
+      @article_id = option.id
+      @article_description = option.description
+    end
   end
 
   # GET /orders/new
