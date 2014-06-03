@@ -5,6 +5,7 @@ OfficeSupplies::Application.routes.draw do
   resources :order_lines  do
     member do
       put 'more'
+      put 'less'
     end
   end
 
